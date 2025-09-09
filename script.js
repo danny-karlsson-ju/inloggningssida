@@ -1,8 +1,8 @@
 const namn = "test"
 const lösenord = "1234"
 
-let welcome_container = document.getElementById("welcome_container")
-let login_container = document.getElementById("login_container") // make this class later want to learn class also query
+let welcomeContainerID = document.getElementById("welcomeContainerID")
+let loginContainerID = document.getElementById("loginContainerID")
 
 
 function createAllElements() {
@@ -23,7 +23,7 @@ function createAllElements() {
     // Remember me checkbox and label
     let rememberMeLabel = document.createElement("label")
     rememberMeLabel.innerHTML = '<input type="checkbox" id="rememberMeCheckboxID"> Remember me'
-    rememberMeLabel.style.display = "block"
+    rememberMeLabel.style.display = "block" // Need to make it a block or it will be shown next to previous element
 
     // Sign in button
     let signInButton = document.createElement("button")
@@ -33,39 +33,38 @@ function createAllElements() {
     // Check account details paragrapth
     let checkAccountDetailsParagrapth = document.createElement("p")
     checkAccountDetailsParagrapth.textContent = "Please check your password and username and try again."
-    checkAccountDetailsParagrapth.style.display = "none" // TODO NEED TO SHOW IF SIGNIN FAILS
+    checkAccountDetailsParagrapth.hidden = true // Hidden by default and shown if fail login
     checkAccountDetailsParagrapth.id = "checkAccountDetailsParagrapthID"
     
     // Append all login elements to login div container
-    login_container.append(usernameParagraph, usernameInput, passwordParagraph, passwordInput, rememberMeLabel, signInButton, checkAccountDetailsParagrapth,) // can append all
+    loginContainerID.append(usernameParagraph, usernameInput, passwordParagraph, passwordInput, rememberMeLabel, signInButton, checkAccountDetailsParagrapth,) // can append all
     
     // Welcome h1
     let welcomeHeader1 = document.createElement("h1")
     welcomeHeader1.textContent = "Welcome home, master!"
     welcomeHeader1.id = "welcomeHeader1ID"
 
-    // Sign out button
+    // Welcome Sign out button
     let signOutButton = document.createElement("button")
     signOutButton.textContent = "Sign Out"
     signOutButton.id = "signOutButtonID"
     
     // Append all welcome elements to welcome div container
-    welcome_container.append(welcomeHeader1, signOutButton,)
+    welcomeContainerID.append(welcomeHeader1, signOutButton,)
 } 
-createAllElements() // Calls this function first to create all elements and id ref
+createAllElements() // Calls this function first to create all elements everything is dependent on this function
 
 
 let checkAccountDetailsParagrapthID = document.getElementById("checkAccountDetailsParagrapthID")
 let signInButtonID = document.getElementById("signInButtonID")
-signInButtonID.addEventListener("click", function() {
-    // Check checkbox status 
-    check_checkbox_checked()
-
+signInButtonID.addEventListener("click", validateAccountDetails)
+function validateAccountDetails() {
     let usernameInputID = document.getElementById("usernameInputID")
     let passwordInputID = document.getElementById("passwordInputID")
     
     // Check if both username and password inputs match hardcoded values
     if (usernameInputID.value === namn && passwordInputID.value === lösenord) {
+        check_checkbox_checked()
         show_and_hide()
         console.log("Correct login");
 
@@ -73,11 +72,11 @@ signInButtonID.addEventListener("click", function() {
         // update welcome message to name but boring with test as name
         //welcomeHeader1ID.textContent = ("Welcome home, " + usernameInputID.value) 
     } else {
-        checkAccountDetailsParagrapthID.style.display = "block"
+        checkAccountDetailsParagrapthID.hidden = false
         console.log("Fail login");
     }
     console.log("signInButton function");
-})
+}
 
 
 let signOutButtonID = document.getElementById("signOutButtonID")
@@ -90,9 +89,7 @@ signOutButtonID.addEventListener("click", function() {
 
 
 let rememberMeCheckboxID = document.getElementById("rememberMeCheckboxID")
-rememberMeCheckboxID.addEventListener("click", check_checkbox_checked) // Makes debug easier but dont need it
-    
-
+rememberMeCheckboxID.addEventListener("click", check_checkbox_checked) // Makes debug easier but dont need it  
 function check_checkbox_checked() {
     //  checks if checkbox is checked and sets the localstorage key: value
     if (rememberMeCheckboxID.checked) {
@@ -112,17 +109,17 @@ function show_and_hide() {
 
     if (localStorage.getItem("RememberMe") === "true") {
         // 1 Stay logged in
-        welcome_container.style.display = "block"
-        login_container.style.display = "none"
+        welcomeContainerID.hidden = false
+        loginContainerID.hidden = true
     } else if (localStorage.getItem("RememberMe") === "false"){
         // 2 Temp logged in
-        welcome_container.style.display = "block"
-        login_container.style.display = "none"
+        welcomeContainerID.hidden = false
+        loginContainerID.hidden = true
     } else {
         // 3 Not loggeed in
-        welcome_container.style.display = "none"
-        login_container.style.display = "block"
-        checkAccountDetailsParagrapthID.style.display = "none"
+        welcomeContainerID.hidden = true
+        loginContainerID.hidden = false
+        checkAccountDetailsParagrapthID.hidden = true
     }
     console.log("show_and_hide function"); 
 }; 
