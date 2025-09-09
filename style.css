@@ -1,12 +1,30 @@
-/* inputs 
-normal #32353C hover: #393C44
+body {
+  text-align: center;
+  margin: 0;
+  margin-top: 200px;
+  font-family: "Arial", "Helvetica", sans-serif;
+}
 
-Sign in button
-left #07BEFF right:#2E73FF
-Brighter colors: Left: #4FD1FF, Right: #749DFF
+input {
+    background-color: #32353C;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+}
 
-background
-bottom #191A1E top: #202328 
+input:hover {
+    filter: brightness(110%);
+}
 
-center everything
-*/
+
+button {
+    background: linear-gradient(to right, #08C0FF, #2C72FF);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+button:hover {
+    filter: brightness(110%);
+}

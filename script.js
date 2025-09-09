@@ -35,6 +35,7 @@ function createAllElements() {
     checkAccountDetailsParagrapth.textContent = "Please check your password and username and try again."
     checkAccountDetailsParagrapth.hidden = true // Hidden by default and shown if fail login
     checkAccountDetailsParagrapth.id = "checkAccountDetailsParagrapthID"
+    checkAccountDetailsParagrapth.style.color = "#C15754";
     
     // Append all login elements to login div container
     loginContainerID.append(usernameParagraph, usernameInput, passwordParagraph, passwordInput, rememberMeLabel, signInButton, checkAccountDetailsParagrapth,) // can append all
