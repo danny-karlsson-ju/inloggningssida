@@ -3,6 +3,7 @@ GitHub repo: https://github.com/danny-karlsson-ju/inloggningssida
 GitHub Pages: https://danny-karlsson-ju.github.io/inloggningssida/
 
 Reflekterande text:
+
 Jag började med att skapa issues för alla steg i uppgiften och milestones för G och VG, vilket gjorde det lätt att bocka av allt.
 
 Istället för att läsa igenom alla steg började jag bara från toppen. Senare upptäckte jag att endast en HTML-fil fick används och att alla vyer ska ritas ut på index, vilket gjorde att jag fick göra om lite. För övrigt har jag två divs i HTML, men de skulle även kunna skapas i JS.
