@@ -116,6 +116,7 @@ function show_and_hide() {
         // 2 Temp logged in
         welcomeContainerID.hidden = false
         loginContainerID.hidden = true
+        localStorage.clear("RememberMe")
     } else {
         // 3 Not loggeed in
         welcomeContainerID.hidden = true
