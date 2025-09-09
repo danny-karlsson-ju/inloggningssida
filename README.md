@@ -1,23 +1,34 @@
-Vi avslutar Javascript-introduktionen med att skapa en inloggningssida.
-Kravspecifikation:
+GitHub repo: https://github.com/danny-karlsson-ju/inloggningssida
+GitHub Pages: https://danny-karlsson-ju.github.io/inloggningssida/
 
-# G Krav
+1. TODO: Förklara hur jag har tänkt.
 
-- Sidan skall ha en meny som innehåller två stycken input-fält,  namn och lösenord, samt en knapp för att logga in.
-- Namn och lösenord skall vara hårdkodade variabler i ditt javascript och vara: namn = "test", lösenord = "1234".
-- Skriver du rätt namn och lösenord så skall du mötas av en ny sida som välkomnar dig till sidan.
-- Skriver du fel lösenord så skall du mötas av en ny sida som informerar om att det blivit fel.
-- Projektet skall enbart innehålla en (1) st html fil (frivilligt att använda en extern css fil, style.css men inga fler html filer.), index.html samt script.js så alla vyer skall ritas ut på index.html.
-- I menyn eller i på välkomstsidan (När jag är inloggad) så ska det visas en logga ut knapp. Klickar jag på den ska första sidan visas igen.
-- När jag är inloggad så skall inte inloggningsformuläret visas längre.
-- Uppgiften skall lösas utan att använda location.reload() funktionen. Den motverkar vårt syfte här. Vi vill jobba med JavaScript, inte emot.
+Reflekterande text:
+Jag började med att skapa issues för alla steg i uppgiften och milestones för G och VG, vilket gjorde det lätt att bocka av allt.
 
-# VG Krav:
+Istället för att läsa igenom alla steg började jag bara från toppen. Senare upptäckte jag att endast en HTML-fil fick används och att alla vyer ska ritas ut på index, vilket gjorde att jag fick göra om lite. För övrigt har jag två divs i HTML, men de skulle även kunna skapas i JS.
 
-- Alla G krav skall vara lösta.
-- Spara inloggad användare i localStorage så att jag kan stänga ner webbsidan och fortfarande vara inloggad när jag öppnar sidan igen.
-- "logga ut" knappen skall tömma localStorage och loggar ut mig.
-- Uppgiften skall även innehålla en beskrivning av kodens funktion och en reflektion kring de metoder som använts för att lösa uppgiften..
-- När du är färdig med din uppgift så skall du bifoga ett textdokument som innehåller en länk till både ett repo med uppgiften, en länk till en testbar sida via Github Pages samt den reflekterande texten.
+Jag kunde nog ha börjat uppgiften med att skriva lite pseudokod för att planera ett bättre flöde för vad jag ville implementera, men det var en enkel uppgift, så det blev bra ändå.
 
-Repot skall hållas som privat, men bjud in Fredrik (FThelin).
+createAllElements()
+Skapar alla element till sidan och appendar dem till rätt div, så att jag sedan kan visa eller dölja de olika divarna. Allt är beroende av att denna funktion kallas först, vilket är den största nackdelen.
+
+validateAccountDetails()
+Kontrollerar att inputfältens values matchar de angivna konstanterna. Om de matchar kallar vi på show_and_hide(). Om inte visas ett meddelande om att någon av dem inte matchar.
+
+signOutButtonID.addEventListener("click", function())
+Tömmer localStorage och kallar på show_and_hide().
+
+function check_checkbox_checked()
+Kollar om checkboxen är ikryssad och uppdaterar localStorage-key "remember me" för att matcha detta.
+
+function show_and_hide()
+Hantera tre olika states:
+1. Om man loggar in kollar den localStorage key rememeber me. Om värdet är true visas välkomstsidan, och sidan kommer ihåg valet så att man är inloggad även efter att sidan laddas om.
+2. Om man loggar in och checkboxen inte är ikryssad: samma som ovan, men vid omladdning måste man logga in igen.
+3. Om det är första gången man besöker sidan (ingen localStorage) eller om man loggar ut: vi rensar localStorage och visar login-sidan.
+Om jag inte hade remember me checkbox så skulle det kunna vara 2 states ist för tre annars funkar den
+
+Överlag tycker jag att uppgiften gick bra och var enkel att slutföra, särskilt efter plugga tech uppgifterna från förra veckan. Uppgiftskraven var något otydliga, vilket gjorde att jag missade vissa steg, men va också lite slarvig med att läsa igenom dem gjorde att jag fick göra om vissa delar.
+Annars tror jag att allt fungerar bra. Jag har även lagt många kommentarer i koden eftersom vi skulle granska den och gjort den lätt att förstå för andra. Jag har bokat en handledningstid för att dubbelkolla att allt ser bra ut innan inlämning och fick feedback om ändringar jag kan göra.
+Jag tycker också att jag arbetade bra med GitHub flow, med issues och branches, och hittade hur man stänger issues via PR, vilket gjorde det smidigt.
