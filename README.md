@@ -2,8 +2,6 @@ GitHub repo: https://github.com/danny-karlsson-ju/inloggningssida
 
 GitHub Pages: https://danny-karlsson-ju.github.io/inloggningssida/
 
-1. TODO: Förklara hur jag har tänkt.
-
 Reflekterande text:
 Jag började med att skapa issues för alla steg i uppgiften och milestones för G och VG, vilket gjorde det lätt att bocka av allt.
 
